@@ -2,6 +2,8 @@ package classes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -29,20 +31,25 @@ public class ConexaoLocal {
 	}
 
 	public void salvar(List<Produto> produtos) {
-	
-		//PreparedStatement pstm = conexao.prepareStatement( this.getSintaxProduto() );
-		 
-//		ResultSet rs = pstm.executeQuery();
 
-//		while (rs.next()) {
-			//System.out.println("Nome Aluno: " + rs.getString("descricao"));
-		//}
 		
-		//rs.close();
-		//pstm.close();
-		
-		this.AtualizarDadosNosCaixas();
-		
+		PreparedStatement pstm;
+		try {
+			pstm = conexao.prepareStatement( "insert into produto ( descricao ) values ( ? )" );
+			pstm.setString( 1, "Xalau");
+			pstm.executeQuery();
+			
+			System.out.println("Produtos inseridos");			
+			
+			this.AtualizarDadosNosCaixas();
+
+			pstm.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 	}
 
 	private void AtualizarDadosNosCaixas() {

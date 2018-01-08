@@ -15,11 +15,11 @@ public class SincronizadorMain {
 
 			List<Produto> produtos = new ArrayList<Produto>(); 
 			ConexaoLocal conexaoLocal = new ConexaoLocal();
-			ConexaoERP conexaoERP = new ConexaoERP();
+			//ConexaoERP conexaoERP = new ConexaoERP();
 
-			produtos = conexaoERP.getProdutos();
+			//produtos = conexaoERP.getProdutos();
 			
-			if( produtos.size() > 0 ) {
+			if( produtos.size() > 0 || true ) {
 				//ConexaoLocal conexaoLocal = new ConexaoLocal();
 
 				conexaoLocal.salvar( produtos );
@@ -31,9 +31,11 @@ public class SincronizadorMain {
 			}
 
 			conexaoLocal.Desconectar();
-			conexaoERP.Desconectar();
+			//conexaoERP.Desconectar();
 			
 			try { Thread.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); }
+
+			break;
 
 		}
 
