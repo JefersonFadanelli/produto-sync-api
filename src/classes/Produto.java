@@ -4,6 +4,8 @@ import java.sql.Date;
 
 public class Produto {
 
+	private Long idproduto;
+	
 	private Long idsubproduto;
 
 	private String descricao;
@@ -89,6 +91,14 @@ public class Produto {
 	private Double pesobruto;
 	private String flagproduzidoescalanaorelevante;
 	private String cnpjfabricante;
+
+	public Long getIdproduto() {
+		return idproduto;
+	}
+
+	public void setIdproduto(Long idproduto) {
+		this.idproduto = idproduto;
+	}
 	
 	public Long getIdsubproduto() {
 		return idsubproduto;
