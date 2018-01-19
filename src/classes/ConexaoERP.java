@@ -41,13 +41,13 @@ public class ConexaoERP {
 	
 	}
 	
-	public List<Produto> getProdutos() {
+	public List<Cliente> getProdutos() {
 		
-		List<Produto> produtos = new ArrayList<Produto>();
-		Produto produto;
+		List<Cliente> produtos = new ArrayList<Cliente>();
+		Cliente produto;
 		PreparedStatement ps;
 		
-		System.out.println("Buscando produtos no ERP ...");
+		System.out.println("Buscando clientes no ERP ...");
 		
 		try {
 
@@ -55,66 +55,58 @@ public class ConexaoERP {
 			ResultSet rs = ps.executeQuery();
 			
 			while( rs.next() ) {
-				produto = new Produto();
+				produto = new Cliente();
 				
-				produto.setIdproduto( rs.getLong( "idproduto" ) );
-				produto.setIdsubproduto( rs.getLong( "idsubproduto" ) );
-				produto.setDescricao( rs.getString( "descrresproduto" ) );
-				produto.setIdcodbarprod( rs.getLong( "idcodbarprod" ) );
-				produto.setValmultivendas( rs.getDouble( "valmultivendas" ) );
-				produto.setDtalteracao( rs.getDate( "dtalteracao" ) );
+				produto.setIdcliente( rs.getLong( "idclifor" ) );
+				produto.setIdconvenio( rs.getLong("idconvenio"));
+				produto.setEmail( rs.getString( "email" ) );
+				produto.setIdpagamento( rs.getLong( "idpagamento" ) );
+				produto.setIdpromocao( rs.getLong( "idpromocao" ) );
+				produto.setUfclifor( rs.getString( "ufclifor" ) );
+				produto.setNome( rs.getString( "nome" ) );
+				produto.setCnpjcpf( rs.getString( "cnpjcpf" ) );
+				produto.setEndereco( rs.getString( "endereco" ) );
+				produto.setBairro( rs.getString( "bairro" ) );
+				produto.setPerdesconto( rs.getDouble( "perdesconto" ) );
+				produto.setDtcadastro( rs.getDate( "dtcadastro" ) );
+				produto.setFonefax( rs.getString( "fonefax" ) );
+				produto.setFone1( rs.getString( "fone1" ) );
+				produto.setFone2( rs.getString( "fone2" ) );
+				produto.setFonecelular( rs.getString( "fonecelular" ) );
+				produto.setInscrestadual( rs.getString( "inscrestadual" ) );
+				produto.setObsgeral( rs.getString( "obsgeral" ) );
+				produto.setNomefantasia( rs.getString( "nomefantasia" ) );
+				produto.setEmail( rs.getString( "email" ) );
 				produto.setFlaginativo( rs.getString( "flaginativo" ) );
-				produto.setIdgrupo( rs.getInt( "idgrupo" ) );
-				produto.setIdsecao( rs.getInt( "idsecao" ) );
-				produto.setIdsubgrupo( rs.getInt( "idsubgrupo" ) );
-				produto.setIddivisao( rs.getInt( "iddivisao" ) );
-				produto.setFlagpesavel( rs.getString( "flagexpbalanca" ) );
-				produto.setValgramasaida( rs.getDouble( "valgramasaida" ) );
-				produto.setFlagvasilhame( rs.getString( "flagvasilhame" ) );
-				produto.setEmbalagemsaida( rs.getString( "embalagemsaida" ) );
-				produto.setTiposituacaotributaria( rs.getString( "tiposittribsai" ) );
-				produto.setAliquota( rs.getDouble( "pericmecf" ) );
-				produto.setValpreco( rs.getDouble( "valprecoproduto" ) );
-				produto.setTipobaixamestre( rs.getString( "tipobaixamestre" ) );
-				produto.setDiasvalidade( rs.getInt( "diasvalidade" ) );
-				produto.setIdinformacaonutricional( rs.getInt( "idinformacaonutricional" ) );
-				produto.setFlagcestabasica( rs.getString( "flagcestabasica" ) );
-				produto.setFlagprodutoacabado( rs.getString( "flagprodutoacabado" ) );
-				produto.setFlaginativovenda( rs.getString( "flagbloqueiavenda" ) );
-				produto.setNcm( rs.getString( "ncm" ) );
-				produto.setFlagcomponente( rs.getString( "flagcomponente" ) );
-				produto.setIdsubcatipireceita( rs.getInt( "idsubcatipireceita" ) );
-				produto.setIdlistaservicoreceita( rs.getInt( "idlistaservicoreceita" ) );
-				produto.setIdsituacaotributaria( rs.getInt( "idsittribsai" ) );
-				produto.setAliquotaerp( rs.getDouble( "pericmsai" ) );
-				produto.setPerreducaoaliquota( rs.getDouble( "perredtribsai" ) );
-				produto.setTipopiscofins( rs.getString( "tipopiscofins" ) );
-				produto.setPerpis( rs.getDouble( "perpis" ) );
-				produto.setPercofins( rs.getDouble( "percofins" ) );
-				produto.setValprecopromocao( rs.getDouble( "valprecopromocao" ) );
-				produto.setDtinipromocao( rs.getDate( "dtinipromocao" ) );
-				produto.setDtfimpromocao( rs.getDate( "dtfimpromocao" ) );
-				produto.setQtdminimapromocao( rs.getInt( "qtdminpromvarejo" ) );
-				produto.setIdprodutovasilhame( rs.getInt( "idprodutovasilhame" ) );
-				produto.setIdsubprodutovasilhame( rs.getInt( "idsubprodutovasilhame" ) );
-				produto.setFlagevidencia( rs.getString( "flagevidencia" ) );
-				produto.setFlagiss( rs.getString( "flagiss" ) );
-				produto.setIdsubprodutoexterno( rs.getInt( "idsubprodutoexterno" ) );
-				produto.setIdcenariofiscal( rs.getInt( "idcenariofiscal" ) );
-				produto.setPercargatributaria( rs.getDouble( "percargatributaria" ) );
-				produto.setValprecounidademedida( rs.getDouble( "valprecoproduto" ) );
-				produto.setValprecopromocaounidademedida( rs.getDouble( "valprecopromocao" ) );
-				produto.setCodcest( rs.getString( "codcest" ) );
-				produto.setIdcstpiscofins( rs.getInt( "idcstpiscofins" ) );
-				produto.setFlagsolicitapesagem( rs.getString( "flagsolicitapesagem" ) );
-				produto.setPerfcep( rs.getDouble( "perfcep" ) );
-				produto.setPesobruto( rs.getDouble( "pesobruto" ) );
-				produto.setPeraliquotafederal( rs.getDouble( "peraliqfederal" ) );
-				produto.setPeraliquotaestadual( rs.getDouble( "peraliqestadual" ) );
-				produto.setPeraliquotamunicipal( rs.getDouble( "peraliqmunicipal" ) );
-				produto.setCodigoibpt( rs.getString( "codigoibpt" ) );
-				produto.setFlagproduzidoescalanaorelevante( rs.getString( "flagproduzidoescalanaorelevante" ) );
-				produto.setCnpjfabricante( rs.getString( "cnpjfabricante" ) );
+				produto.setUrl( rs.getString( "url" ) );
+				produto.setDtalteracao( rs.getDate( "dtalteracao" ) );
+				produto.setFlagclientevip( rs.getString( "flagclientevip" ) );
+				produto.setDescrcidade( rs.getString( "descrcidade" ) );
+				produto.setCep( rs.getInt( "IdCep" ) + "" );
+				produto.setNumcartaomag( rs.getString( "numcartaomag" ) );
+				produto.setVallimitecredito( rs.getDouble( "vallimitecredito" ) );
+				produto.setVallimiteconvenio( rs.getDouble( "vallimiteconvenio" ) );
+				produto.setVallimitecheque( rs.getDouble( "vallimiteseguracachq" ) );
+				produto.setDtvalidadecartao( rs.getDate( "dtvalidadecartao" ) );
+				produto.setSenhaconvenio( rs.getInt( "senhaconvenio" ) );
+				produto.setDtultimaalteracao( rs.getDate( "dtultimaalteracao" ) );
+				produto.setTipofisicajuridica( rs.getString( "tipofisicajuridica" ) );
+				produto.setFlagnaoconschqserasa( rs.getString( "flagnaoconschqserasa" ) );
+				produto.setTipotestecliente( rs.getString( "tipotestecliente" ) );
+				produto.setNumeroresidencial( rs.getString( "numero" ) );
+				produto.setIdcidade( rs.getInt( "idcidade" ) );
+				produto.setFlagnaoconsultacheques( rs.getString( "flagnaoconsultacheques" ) );
+				produto.setFlagrestringeformaspagto( rs.getString( "flagusaformascomsenha" ) );
+				produto.setPerminimoentrada( rs.getDouble( "perminimoentrada" ) );
+				produto.setIdvencimentocartaoproprio( rs.getInt( "idvctocartao" ) );
+				produto.setFlagutilizapontuacao( rs.getString( "flagpontua" ) );
+				produto.setCodigoibge( rs.getInt( "codigoibge" ) );
+				produto.setDescrestado( rs.getString( "descrestado" ) );
+				produto.setTipocadastro( rs.getString( "tipocadastro" ) );
+				produto.setFlagnaoenviadadoscliforxml( rs.getString( "flagnaoenviadadoscliforxml" ) );
+				produto.setDtinicialpromocao( rs.getDate( "dtinicialpromocao" ) );
+				produto.setDtfinalpromocao( rs.getDate( "dtfinalpromocao" ) );
+				produto.setProgpontuacao( rs.getString( "progpontuacao" ) );
 
 				produtos.add( produto );
 			}
@@ -137,7 +129,7 @@ public class ConexaoERP {
 	private String getSQLProduto() {
 		String sql;
 		
-		sql = this.readFile( "c:\\sql\\sqlProduto.txt" );
+		sql = this.readFile( "c:\\sql\\sqlCliente.txt" );
 		//System.out.println(sql);
 
 		return sql;

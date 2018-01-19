@@ -30,77 +30,70 @@ public class ConexaoLocal {
 	
 	}
 
-	public void salvar(List<Produto> produtos) {
+	public void salvar(List<Cliente> produtos) {
 		
-		System.out.println("Inserindo produtos...");
+		System.out.println("Inserindo clientes...");
 
 		try {
 			
-			String insert = "INSERT INTO produto ( idproduto, idsubproduto, descricao, idcodbarprod, valmultivendas, dtalteracao, Flaginativo, Idgrupo, Idsecao, Idsubgrupo, Iddivisao, Flagpesavel, Valgramasaida, Flagvasilhame, Embalagemsaida, Tiposituacaotributaria, Aliquota, Valpreco, Tipobaixamestre, Diasvalidade, Idinformacaonutricional, Flagcestabasica, Flagprodutoacabado, Flaginativovenda, Ncm, Flagcomponente, Idsubcatipireceita, Idlistaservicoreceita, Idsituacaotributaria, Aliquotaerp, Perreducaoaliquota, Tipopiscofins, Perpis, Percofins, Valprecopromocao, Dtinipromocao, Dtfimpromocao, Qtdminimapromocao, Idprodutovasilhame, Idsubprodutovasilhame, Flagevidencia, Flagiss, Idsubprodutoexterno, Idcenariofiscal, Percargatributaria, Valprecounidademedida, Valprecopromocaounidademedida, Codcest, Idcstpiscofins, Flagsolicitapesagem, Perfcep, Pesobruto, Peraliquotafederal, Peraliquotaestadual, Peraliquotamunicipal, Codigoibpt, Flagproduzidoescalanaorelevante, Cnpjfabricante  ) ";
-			insert += " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
+			String insert = "INSERT INTO cliente ( idcliente, idconvenio, idpagamento, idpromocao, ufclifor, nome, cnpjcpf, endereco, bairro, perdesconto, dtcadastro, fonefax, fone1, fone2, fonecelular, numcartaomag, vallimitecredito, vallimiteconvenio, vallimitecheque, dtvalidadecartao, inscrestadual, obsgeral, senhaconvenio, nomefantasia, email, tipofisicajuridica, flaginativo, flagnaoconschqserasa, dtultimaalteracao, url, dtalteracao, flagclientevip, descrcidade, cep, tipotestecliente, chapafolhapgto, numeroresidencial, idcidade, flagnaoconsultacheques, flagrestringeformaspagto, perminimoentrada, idvencimentocartaoproprio, flagutilizapontuacao, descrestado, pais, codigoibge, tipocadastro, flagnaoenviadadoscliforxml, dtinicialpromocao, dtfinalpromocao, progpontuacao  ) ";
+			insert += " VALUES ( ?, ?, ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?, ?, ?, ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?, ?, ?, ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?, ?, ?, ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?, ?, ?, ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?, ? ) ";
 
 			PreparedStatement ps = conexao.prepareStatement( insert );
 			
-			for( Produto p : produtos){
+			for( Cliente p : produtos){
 				
-				ps.setLong( 1, p.getIdproduto() );
-				ps.setLong( 2, p.getIdsubproduto( ) );
-				ps.setString( 3, p.getDescricao( ) );
-				ps.setLong( 4, p.getIdcodbarprod( ) );
-				ps.setDouble( 5, p.getValmultivendas(  ) );
-				ps.setDate( 6, p.getDtalteracao( ) );
-				ps.setString( 7, p.getFlaginativo( ) );
-				ps.setInt( 8, p.getIdgrupo( ) );
-				ps.setInt( 9, p.getIdsecao( ) );
-				ps.setInt( 10, p.getIdsubgrupo( ) );
-				ps.setInt( 11, p.getIddivisao( ) );
-				ps.setString( 12, p.getFlagpesavel( ) );
-				ps.setDouble( 13, p.getValgramasaida( ) );
-				ps.setString( 14, p.getFlagvasilhame( ) );
-				ps.setString( 15, p.getEmbalagemsaida( ) );
-				ps.setString( 16, p.getTiposituacaotributaria( ) );
-				ps.setDouble( 17, p.getAliquota( ) );
-				ps.setDouble( 18, p.getValpreco( ) );
-				ps.setString( 19, p.getTipobaixamestre( ) );
-				ps.setInt( 20, p.getDiasvalidade( ) );
-				ps.setInt( 21, p.getIdinformacaonutricional( ) );
-				ps.setString( 22, p.getFlagcestabasica( ) );
-				ps.setString( 23, p.getFlagprodutoacabado( ) );
-				ps.setString( 24, p.getFlaginativovenda( ) );
-				ps.setString( 25, p.getNcm( ) );
-				ps.setString( 26, p.getFlagcomponente( ) );
-				ps.setInt( 27, p.getIdsubcatipireceita( ) );
-				ps.setInt( 28, p.getIdlistaservicoreceita( ) );
-				ps.setInt( 29, p.getIdsituacaotributaria( ) );
-				ps.setDouble( 30, p.getAliquotaerp( ) );
-				ps.setDouble( 31, p.getPerreducaoaliquota( ) );
-				ps.setString( 32, p.getTipopiscofins( ) );
-				ps.setDouble( 33, p.getPerpis( ) );
-				ps.setDouble( 34, p.getPercofins( ) );
-				ps.setDouble( 35, p.getValprecopromocao( ) );
-				ps.setDate( 36, p.getDtinipromocao( ) );
-				ps.setDate( 37, p.getDtfimpromocao( ) );
-				ps.setDouble( 38, p.getQtdminimapromocao( ) );
-				ps.setInt( 39, p.getIdprodutovasilhame( ) );
-				ps.setInt( 40, p.getIdsubprodutovasilhame( ) );
-				ps.setString( 41, p.getFlagevidencia( ) );
-				ps.setString( 42, p.getFlagiss( ) );
-				ps.setLong( 43, p.getIdsubprodutoexterno( ) );
-				ps.setInt( 44, p.getIdcenariofiscal( ) );
-				ps.setDouble( 45, p.getPercargatributaria(  ) );
-				ps.setDouble( 46, p.getValprecounidademedida( ) );
-				ps.setDouble( 47, p.getValprecopromocaounidademedida( ) );
-				ps.setString( 48, p.getCodcest( ) );
-				ps.setInt( 49, p.getIdcstpiscofins( ) );
-				ps.setString( 50, p.getFlagsolicitapesagem( ) );
-				ps.setDouble( 51, p.getPerfcep( ) );
-				ps.setDouble( 52, p.getPesobruto( ) );
-				ps.setDouble( 53, p.getPeraliquotafederal( ) );
-				ps.setDouble( 54, p.getPeraliquotaestadual( ) );
-				ps.setDouble( 55, p.getPeraliquotamunicipal( ) );
-				ps.setString( 56, p.getCodigoibpt( ) );
-				ps.setString( 57, p.getFlagproduzidoescalanaorelevante( ) );
-				ps.setString( 58, p.getCnpjfabricante( ) );
+				ps.setLong( 1, p.getIdcliente() );
+				ps.setLong( 2, p.getIdconvenio( ) );
+				ps.setLong( 3, p.getIdpagamento( ) );
+				ps.setLong( 4, p.getIdpromocao( ) );
+				ps.setString( 5, p.getUfclifor(  ) );
+				ps.setString( 6, p.getNome( ) );
+				ps.setString( 7, p.getCnpjcpf( ) );
+				ps.setString( 8, p.getEndereco( ) );
+				ps.setString( 9, p.getBairro( ) );
+				ps.setDouble( 10, p.getPerdesconto( ) );
+				ps.setDate( 11, p.getDtcadastro( ) );
+				ps.setString( 12, p.getFonefax( ) );
+				ps.setString( 13, p.getFone1( ) );
+				ps.setString( 14, p.getFone2( ) );
+				ps.setString( 15, p.getFonecelular( ) );
+				ps.setString( 16, p.getNumcartaomag( ) );
+				ps.setDouble( 17, p.getVallimitecredito( ) );
+				ps.setDouble( 18, p.getVallimiteconvenio( ) );
+				ps.setDouble( 19, p.getVallimitecheque( ) );
+				ps.setDate( 20, p.getDtvalidadecartao( ) );
+				ps.setString( 21, p.getInscrestadual( ) );
+				ps.setString( 22, p.getObsgeral( ) );
+				ps.setInt( 23, p.getSenhaconvenio( ) );
+				ps.setString( 24, p.getNomefantasia( ) );
+				ps.setString( 25, p.getEmail( ) );
+				ps.setString( 26, p.getTipofisicajuridica( ) );
+				ps.setString( 27, p.getFlaginativo( ) );
+				ps.setString( 28, p.getFlagnaoconschqserasa( ) );
+				ps.setDate( 29, p.getDtultimaalteracao( ) );
+				ps.setString( 30, p.getUrl( ) );
+				ps.setDate( 31, p.getDtalteracao( ) );
+				ps.setString( 32, p.getFlagclientevip( ) );
+				ps.setString( 33, p.getDescrcidade( ) );
+				ps.setString( 34, p.getCep( ) );
+				ps.setString( 35, p.getTipotestecliente( ) );
+				ps.setString( 36, p.getChapafolhapgto( ) );
+				ps.setString( 37, p.getNumeroresidencial( ) );
+				ps.setInt( 38, p.getIdcidade( ) );
+				ps.setString( 39, p.getFlagnaoconsultacheques( ) );
+				ps.setString( 40, p.getFlagrestringeformaspagto( ) );
+				ps.setDouble( 41, p.getPerminimoentrada( ) );
+				ps.setLong( 42, p.getIdvencimentocartaoproprio( ) );
+				ps.setString( 43, p.getFlagutilizapontuacao( ) );
+				ps.setString( 44, p.getDescrestado( ) );
+				ps.setString( 45, p.getPais( ) );
+				ps.setLong( 46, p.getCodigoibge(  ) );
+				ps.setString( 47, p.getTipocadastro( ) );
+				ps.setString( 48, p.getFlagnaoenviadadoscliforxml( ) );
+				ps.setDate( 49, p.getDtinicialpromocao( ) );
+				ps.setDate( 50, p.getDtfinalpromocao( ) );
+				ps.setString( 51, p.getProgpontuacao( ) );
 				
 				ps.addBatch();
 			}
@@ -108,7 +101,7 @@ public class ConexaoLocal {
 			ps.executeBatch();
 			ps.close();
 
-			System.out.println("Produtos inseridos");			
+			System.out.println("Clientes inseridos");			
 						
 			this.AtualizarDadosNosCaixas();
 			

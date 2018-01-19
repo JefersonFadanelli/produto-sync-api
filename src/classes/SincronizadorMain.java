@@ -10,7 +10,7 @@ public class SincronizadorMain {
 	 */
 	public static void main(String args[]) {
 		long inicio;
-		List<Produto> produtos;
+		List<Cliente> produtos;
 		ConexaoLocal conexaoLocal;
 		ConexaoERP conexaoERP;
 		
@@ -18,7 +18,7 @@ public class SincronizadorMain {
 
 		while( true ){
 			
-			produtos = new ArrayList<Produto>(); 
+			produtos = new ArrayList<Cliente>(); 
 						
 			inicio = System.currentTimeMillis();
 			
